@@ -24,6 +24,13 @@ const sensorSchema = new mongoose.Schema({
 
 const SensorData = mongoose.model('SensorData', sensorSchema);
 
+// Test: trimite o valoare dummy la fiecare 5 secunde
+setInterval(async () => {
+    const dummy = new SensorData({ temperature: 20 + Math.random()*5, humidity: 50 + Math.random()*10 });
+    await dummy.save();
+    console.log("Date dummy salvate pentru test");
+}, 5000);
+
 // Ruta POST pentru ESP32
 app.post('/api/data', async (req, res) => {
     const data = new SensorData(req.body);
@@ -41,5 +48,7 @@ app.get('/api/data', async (req, res) => {
     const data = await SensorData.find().sort({timestamp: -1}).limit(10);
     res.json(data);
 });
+
+
 
 app.listen(5000, () => console.log("Serverul rulează pe portul 5000"));
