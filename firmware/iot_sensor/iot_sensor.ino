@@ -2,9 +2,9 @@
 #include <HTTPClient.h>
 #include "DHT.h"
 
-const char* ssid = "TP-Link_38AC_5G";
-const char* password = "90202803";
-const char* serverUrl = "http://192.168.1.210:5000/api/data";
+const char* ssid = "DIGIFIBRA-CEZF";
+const char* password = "FbP4zGG7DUeD";
+const char* serverUrl = "http://192.168.1.133:5000/api/data";
 
 #define DHTPIN 4
 #define DHTTYPE DHT22
